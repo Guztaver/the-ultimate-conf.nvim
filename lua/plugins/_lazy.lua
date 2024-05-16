@@ -14,8 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local M = {
 	"BurntSushi/ripgrep",
 	"andweeb/presence.nvim",
-	"echasnovski/mini.animate",
-	"echasnovski/mini.surround",
 	"folke/todo-comments.nvim",
 	"morhetz/gruvbox",
 	"neovim/nvim-lspconfig",
@@ -23,9 +21,18 @@ local M = {
 	"stevearc/conform.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
+	"startup-nvim/startup.nvim",
+	"stevearc/oil.nvim",
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options here
+		},
+		lazy = false,
+	},
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = { "onsails/lspkind.nvim", 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+		dependencies = { "onsails/lspkind.nvim", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 
 	},
 	{
@@ -50,9 +57,6 @@ local M = {
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
-			config = function()
-				require("telescope").load_extension("fzf")
-			end,
 		},
 	},
 	{
