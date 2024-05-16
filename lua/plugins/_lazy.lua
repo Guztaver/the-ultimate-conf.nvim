@@ -13,16 +13,21 @@ vim.opt.rtp:prepend(lazypath)
 
 local M = {
 	"BurntSushi/ripgrep",
+	"andweeb/presence.nvim",
 	"echasnovski/mini.animate",
 	"echasnovski/mini.surround",
+	"folke/todo-comments.nvim",
 	"morhetz/gruvbox",
 	"neovim/nvim-lspconfig",
+	"nvim-treesitter/nvim-treesitter-textobjects",
 	"stevearc/conform.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
-	"nvim-treesitter/nvim-treesitter-textobjects",
-	"folke/todo-comments.nvim",
-	"andweeb/presence.nvim",
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = { "onsails/lspkind.nvim", 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+
+	},
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -40,9 +45,24 @@ local M = {
 			-- refer to the configuration section below
 		}
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
-	{ "nvim-telescope/telescope.nvim",            tag = "0.1.6",      dependencies = { "nvim-lua/plenary.nvim", "sharkdp/fd" } },
+	{
+		"telescope.nvim",
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			config = function()
+				require("telescope").load_extension("fzf")
+			end,
+		},
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		keys = function()
+			return {}
+		end,
+	},
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-telescope/telescope.nvim",   tag = "0.1.6",      dependencies = { "nvim-lua/plenary.nvim", "sharkdp/fd" } },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" }
