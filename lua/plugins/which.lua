@@ -1,4 +1,5 @@
-require("which-key").setup({
+local wk = require("which-key")
+wk.setup({
 	presets = {
 		q = true,
 	},
@@ -7,4 +8,12 @@ require("which-key").setup({
 		["<Tab>"] = "Tab",
 		["<CR>"] = "Enter",
 	},
+})
+
+wk.register({
+	["<tab>s"] = {
+		g = {
+			name = "tabs",
+		},
+	}
 })
