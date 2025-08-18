@@ -160,8 +160,13 @@ return {
         })
 
         -- Disable any lightbulb or code action signs that might appear
-        vim.fn.sign_undefine("LightBulbSign")
-        vim.fn.sign_undefine("DiagnosticSignLightBulb")
+        -- Check if signs exist before undefining to avoid errors
+        if vim.fn.sign_getdefined("LightBulbSign")[1] then
+            vim.fn.sign_undefine("LightBulbSign")
+        end
+        if vim.fn.sign_getdefined("DiagnosticSignLightBulb")[1] then
+            vim.fn.sign_undefine("DiagnosticSignLightBulb")
+        end
 
         -- Remove any CursorHold autocmds that might show lightbulbs
         vim.api.nvim_create_autocmd('CursorHold', {

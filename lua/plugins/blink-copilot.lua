@@ -1,9 +1,12 @@
 return {
-	"giuxtaposition/blink-cmp-copilot",
-	config = function()
-		require("copilot").setup({
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-		})
-	end
+    "giuxtaposition/blink-cmp-copilot",
+    dependencies = {
+        "zbirenbaum/copilot.lua",
+        "saghen/blink.cmp",
+    },
+    opts = {},
+    config = function()
+        -- No additional configuration needed here
+        -- The plugin will automatically register itself with blink.cmp
+    end,
 }

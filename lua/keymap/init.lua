@@ -3,7 +3,7 @@ local M = {}
 ---A helper function to create a new keymap.
 ---@param opts {desc: string, command: string|function, keys: table, options?: table} A table with keymap options.
 function M.add(opts)
-    local modes, keys = table.unpack(opts.keys)
+    local modes, keys = unpack(opts.keys)
     if type(modes) == 'string' then
         modes = { modes }
     end

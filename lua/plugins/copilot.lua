@@ -1,6 +1,10 @@
 return {
-	"zbirenbaum/copilot.lua",
-	cmd = "Copilot",
-	event = "InsertEnter",
-	opts = {},
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        server_opts_overrides = {},
+    },
 }

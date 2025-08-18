@@ -1,6 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   "Lua.runtime.version": "LuaJIT",
+  "Lua.runtime.builtin": {
+    "basic": "enable",
+    "bit": "enable",
+    "bit32": "enable",
+    "builtin": "enable",
+    "coroutine": "enable",
+    "debug": "enable",
+    "ffi": "enable",
+    "io": "enable",
+    "jit": "enable",
+    "math": "enable",
+    "os": "enable",
+    "package": "enable",
+    "string": "enable",
+    "table": "enable",
+    "utf8": "enable"
+  },
   "Lua.runtime.path": ["lua/?.lua", "lua/?/init.lua"],
   "Lua.workspace.library": [
     "${3rd}/luv/library",
@@ -13,7 +30,7 @@
   "Lua.diagnostics.neededFileStatus": {
     "*": "Any"
   },
-  "Lua.diagnostics.globals": ["vim", "Snacks", "_G"],
+  "Lua.diagnostics.globals": ["vim", "Snacks", "_G", "unpack"],
   "Lua.hint.enable": true,
   "Lua.hint.setType": false,
   "Lua.hint.paramType": true,
