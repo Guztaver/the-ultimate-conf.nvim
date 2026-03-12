@@ -1,8 +1,10 @@
 require("config.lazy")
 require("config.keymaps")
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = true;
+vim.g.loaded_netrwPlugin = true
+-- set rnu
+vim.opt.relativenumber = true;
 
 vim.opt.termguicolors = true
 

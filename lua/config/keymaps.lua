@@ -2,20 +2,20 @@ local keymap = require("keymap.init")
 
 keymap.add({
 	desc = "Open NvimTree (Normal Mode)",
-	command = ":NvimTreeToggle<CR>",
-	keys = { "n", "<Tab>e" },
+	command = ":NvimTreeClose<CR>",
+	keys = { "n", "<Tab>r" },
 })
 
 keymap.add({
 	desc = "Focus NvimTree",
 	command = ":NvimTreeFocus<CR>",
-	keys = { "n", "<Tab>f" },
+	keys = { "n", "<Tab>e" },
 })
 
 keymap.add({
 	desc = "Open NvimTree (Insert Mode)",
 	command = ":NvimTreeToggle<CR>",
-	keys = { "i", "<Tab>e" },
+	keys = { "n", "<Tab>e" },
 })
 
 keymap.add({
