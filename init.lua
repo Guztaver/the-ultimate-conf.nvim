@@ -34,3 +34,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 		end
 	end
 })
+
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono NF"
+end

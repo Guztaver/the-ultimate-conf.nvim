@@ -1,4 +1,4 @@
 -- yes, actually Doom
-return {
-	"seandewar/actually-doom.nvim"
-}
+-- return {
+--	"seandewar/actually-doom.nvim"
+--}
