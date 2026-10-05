@@ -41,12 +41,21 @@ return {
 		})
 
 		-- Setup LSP handlers
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-			border = "rounded",
-		})
 
-		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-			border = "rounded",
+		-- Rounded borders for hover/signature floats
+		vim.lsp.config('*', {
+			handlers = {
+				['textDocument/hover'] = function(err, result, ctx, config)
+					config = config or {}
+					config.border = 'rounded'
+					return vim.lsp.handlers.hover(err, result, ctx, config)
+				end,
+				['textDocument/signatureHelp'] = function(err, result, ctx, config)
+					config = config or {}
+					config.border = 'rounded'
+					return vim.lsp.handlers.signature_help(err, result, ctx, config)
+				end,
+			},
 		})
 
 		-- Global LSP keymaps
@@ -57,7 +66,7 @@ return {
 		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 		-- LSP attach function
-		local on_attach = function(client, bufnr)
+		local on_attach = function(bufnr)
 			-- Enable completion triggered by <c-x><c-o>
 			vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

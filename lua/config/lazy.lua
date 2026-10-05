@@ -32,6 +32,9 @@ require("lazy").setup({
 	install = { colorscheme = { "catppuccin-frappe" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+	rocks = {
+		hererocks = true 
+	},
 })
 
 vim.cmd.colorscheme "catppuccin-frappe"
