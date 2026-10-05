@@ -34,5 +34,6 @@ jobs:
 
       # Executa o checkhealth e exibe os resultados nos logs do GitHub Actions
       - name: Run Neovim Checkhealth
-        run: nvim --headless +checkhealth +write! checkhealth.txt +qa && cat checkhealth.txt
-
+        run: |
+          nvim --headless +checkhealth "+lua io.open('checkhealth.txt', 'w'):write(table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')):close()" +qa
+          cat checkhealth.txt
