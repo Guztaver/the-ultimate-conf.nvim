@@ -1,0 +1,38 @@
+name: Neovim Config Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: Checkhealth & Headless Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Instala o Neovim de forma automatizada no ambiente
+      - name: Setup Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable # Ou 'nightly' se usar a versão de desenvolvimento
+
+      # Linka o repositório atual para simular o diretório ~/.config/nvim do usuário
+      - name: Link configuration to XDG directory
+        run: |
+          mkdir -p ~/.config
+          ln -s "$(pwd)" ~/.config/nvim
+
+      # Roda o Neovim em modo headless abrindo e fechando para garantir que não há erros de sintaxe no init.lua
+      - name: Verify startup with no blocking errors
+        run: nvim --headless +qa
+
+      # Executa o checkhealth e exibe os resultados nos logs do GitHub Actions
+      - name: Run Neovim Checkhealth
+        run: nvim --headless +checkhealth +write! checkhealth.txt +qa && cat checkhealth.txt
+
